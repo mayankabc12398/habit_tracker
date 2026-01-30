@@ -29,7 +29,7 @@ export default function Sidebar({ open, setOpen }) {
 
         <nav className="nav flex-column p-2">
           <NavLink to="/" className="nav-link py-2">
-            🏠 <span className="ms-1">Home</span>
+            🏠 <span className="ms-1">Dashboard</span>
           </NavLink>
 
           <NavLink to="/habits" className="nav-link py-2">
