@@ -1,6 +1,11 @@
 import HabitItem from "./HabitItem";
 
-export default function HabitList({ habits, onToggle }) {
+export default function HabitList({
+  habits,
+  onToggle,
+  onDelete,
+  onEdit
+}) {
   if (habits.length === 0) {
     return (
       <p className="text-center text-muted mt-4">
@@ -16,6 +21,8 @@ export default function HabitList({ habits, onToggle }) {
           key={habit.id}
           habit={habit}
           onToggle={onToggle}
+          onDelete={onDelete}
+          onEdit={onEdit}
         />
       ))}
     </ul>

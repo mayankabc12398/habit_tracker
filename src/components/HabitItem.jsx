@@ -1,6 +1,11 @@
 import { getToday } from "../utils/dateUtils";
 
-export default function HabitItem({ habit, onToggle, onDelete, onEdit }) {
+export default function HabitItem({
+  habit,
+  onToggle,
+  onDelete,
+  onEdit
+}) {
   const today = getToday();
   const isDone = habit.completedDates.includes(today);
 
@@ -17,6 +22,7 @@ export default function HabitItem({ habit, onToggle, onDelete, onEdit }) {
           checked={isDone}
           onChange={() => onToggle(habit.id)}
         />
+
         <label
           className={`form-check-label ${
             isDone ? "text-decoration-line-through" : ""
@@ -28,12 +34,15 @@ export default function HabitItem({ habit, onToggle, onDelete, onEdit }) {
 
       <div className="btn-group btn-group-sm">
         <button
+          type="button"
           className="btn btn-outline-secondary"
           onClick={() => onEdit(habit)}
         >
           ✏️
         </button>
+
         <button
+          type="button"
           className="btn btn-outline-danger"
           onClick={() => onDelete(habit.id)}
         >

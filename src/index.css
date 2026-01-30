@@ -32,3 +32,48 @@ body.bg-dark .form-control {
 body.bg-dark .form-control::placeholder {
   color: #aaa;
 }
+
+.nav-link.active {
+  background-color: #0d6efd;
+  color: white !important;
+  border-radius: 6px;
+}
+
+.nav-link {
+  border-radius: 8px;
+  margin-bottom: 4px;
+}
+
+.nav-link.active {
+  background-color: #0d6efd;
+  color: #fff !important;
+  font-weight: 500;
+}
+.nav-link {
+  font-size: 14px;
+}
+
+
+
+/* animation */
+.animate-in {
+  animation: slideUp 0.35s ease-out;
+}
+.card {
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.08);
+}
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
