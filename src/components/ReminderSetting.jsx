@@ -1,39 +1,30 @@
-import { useState } from "react";
-import { requestNotificationPermission } from "../utils/notificationUtils";
+import { useState, useEffect } from "react";
 
-export default function ReminderSetting({ onSave }) {
+export default function ReminderSetting() {
   const [time, setTime] = useState(
     localStorage.getItem("reminderTime") || ""
   );
 
-  const enableReminder = async () => {
-    const granted = await requestNotificationPermission();
-    if (!granted) return alert("Permission denied");
-
+  useEffect(() => {
     localStorage.setItem("reminderTime", time);
-    onSave(time);
-    alert("Daily reminder enabled 🔔");
-  };
+  }, [time]);
 
   return (
-    <div className="mt-3">
-      <label className="form-label small">Daily Reminder Time</label>
+    <div>
+      <label className="form-label small">
+        Daily Reminder Time
+      </label>
 
-      <div className="d-flex gap-2">
-        <input
-          type="time"
-          className="form-control"
-          value={time}
-          onChange={(e) => setTime(e.target.value)}
-        />
-        <button
-          className="btn btn-outline-primary"
-          onClick={enableReminder}
-          disabled={!time}
-        >
-          Enable
-        </button>
-      </div>
+      <input
+        type="time"
+        className="form-control w-50"
+        value={time}
+        onChange={(e) => setTime(e.target.value)}
+      />
+
+      <small className="text-muted d-block mt-1">
+        (Notification feature can use this later)
+      </small>
     </div>
   );
 }

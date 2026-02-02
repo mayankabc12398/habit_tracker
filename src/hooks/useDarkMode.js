@@ -2,18 +2,17 @@ import { useEffect, useState } from "react";
 
 export default function useDarkMode() {
   const [dark, setDark] = useState(
-    localStorage.getItem("dark") === "true"
+    localStorage.getItem("theme") === "dark"
   );
 
   useEffect(() => {
-    localStorage.setItem("dark", dark);
-
     if (dark) {
-      document.body.classList.add("bg-dark", "text-light");
-      document.body.classList.remove("bg-light");
+      document.body.classList.add("dark");
+      // document.body.style.background = "black";
+      localStorage.setItem("theme", "dark");
     } else {
-      document.body.classList.add("bg-light");
-      document.body.classList.remove("bg-dark", "text-light");
+      document.body.classList.remove("dark");
+      localStorage.setItem("theme", "light");
     }
   }, [dark]);
 

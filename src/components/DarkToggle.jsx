@@ -1,10 +1,15 @@
 export default function DarkToggle({ dark, setDark }) {
   return (
-    <button
-      className="btn btn-sm btn-outline-secondary w-100 mb-3"
-      onClick={() => setDark(!dark)}
-    >
-      {dark ? "☀️ Light Mode" : "🌙 Dark Mode"}
-    </button>
+    <div className="form-check form-switch">
+      <input
+        className="form-check-input"
+        type="checkbox"
+        checked={dark}
+        onChange={() => setDark(!dark)}
+      />
+      <label className="form-check-label">
+        Dark Mode
+      </label>
+    </div>
   );
 }

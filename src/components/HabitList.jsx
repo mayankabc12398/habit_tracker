@@ -1,30 +1,58 @@
-import HabitItem from "./HabitItem";
-
+import { getToday } from "../utils/dateUtils";
+import HabitItem from './HabitItem'
 export default function HabitList({
   habits,
   onToggle,
   onDelete,
-  onEdit
+  onEdit,
+  onMarkAll,
+  onClearToday
 }) {
-  if (habits.length === 0) {
+  if (!habits || habits.length === 0) {
     return (
-      <p className="text-center text-muted mt-4">
-        No habits yet. Start with one 🚀
-      </p>
+      <div className="alert alert-light text-center">
+        No habits yet. Add your first habit 💪
+      </div>
     );
   }
 
   return (
-    <ul className="list-group mt-4">
-      {habits.map((habit) => (
-        <HabitItem
-          key={habit.id}
-          habit={habit}
-          onToggle={onToggle}
-          onDelete={onDelete}
-          onEdit={onEdit}
-        />
-      ))}
-    </ul>
+    <>
+      {/* BULK ACTIONS */}
+      <div className="d-flex justify-content-between align-items-center mb-2">
+        <small className="text-muted">
+          {habits.length} habits
+        </small>
+
+        <div className="btn-group btn-group-sm">
+          <button
+            className="btn btn-outline-success"
+            onClick={onMarkAll}
+          >
+            Mark all today
+          </button>
+
+          <button
+            className="btn btn-outline-danger"
+            onClick={onClearToday}
+          >
+            Clear today
+          </button>
+        </div>
+      </div>
+
+      {/* HABIT ITEMS */}
+      <div>
+        {habits.map((habit) => (
+          <HabitItem
+            key={habit.id}
+            habit={habit}
+            onToggle={onToggle}
+            onDelete={onDelete}
+            onEdit={onEdit}
+          />
+        ))}
+      </div>
+    </>
   );
 }

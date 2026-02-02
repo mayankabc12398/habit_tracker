@@ -12,6 +12,9 @@ function App() {
   const [habits, setHabits] = useLocalStorage("habits", []);
   const [editingHabit, setEditingHabit] = useState(null);
   const [dark, setDark] = useDarkMode();
+  const [preferences, setPreferences] = useLocalStorage("preferences", {
+    weekStart: "monday",
+  });
 
   const addHabit = (habit) => setHabits((p) => [...p, habit]);
 
@@ -20,9 +23,35 @@ function App() {
     setHabits((p) => p.filter((h) => h.id !== id));
   };
 
-  const updateHabit = (id, title) => {
-    setHabits((p) =>
-      p.map((h) => (h.id === id ? { ...h, title } : h))
+  const markAllToday = () => {
+    const today = getToday();
+
+    setHabits((prev) =>
+      prev.map((h) =>
+        h.completedDates.includes(today)
+          ? h
+          : { ...h, completedDates: [...h.completedDates, today] },
+      ),
+    );
+  };
+
+  const clearToday = () => {
+    const ok = window.confirm("Clear today's progress?");
+    if (!ok) return;
+
+    const today = getToday();
+
+    setHabits((prev) =>
+      prev.map((h) => ({
+        ...h,
+        completedDates: h.completedDates.filter((d) => d !== today),
+      })),
+    );
+  };
+
+  const updateHabit = (id, updates) => {
+    setHabits((prev) =>
+      prev.map((h) => (h.id === id ? { ...h, ...updates } : h)),
     );
     setEditingHabit(null);
   };
@@ -36,10 +65,10 @@ function App() {
               ...h,
               completedDates: h.completedDates.includes(today)
                 ? h.completedDates.filter((d) => d !== today)
-                : [...h.completedDates, today]
+                : [...h.completedDates, today],
             }
-          : h
-      )
+          : h,
+      ),
     );
   };
 
@@ -47,10 +76,7 @@ function App() {
     <BrowserRouter>
       <Routes>
         <Route element={<Layout />}>
-          <Route
-            path="/"
-            element={<Dashboard habits={habits} />}
-          />
+          <Route path="/" element={<Dashboard habits={habits} />} />
           <Route
             path="/habits"
             element={
@@ -62,12 +88,23 @@ function App() {
                 editingHabit={editingHabit}
                 setEditingHabit={setEditingHabit}
                 updateHabit={updateHabit}
+                clearToday={clearToday}
+                markAllToday={markAllToday}
               />
             }
           />
           <Route
             path="/settings"
-            element={<Settings dark={dark} setDark={setDark} />}
+            element={
+              <Settings
+                dark={dark}
+                setDark={setDark}
+                habits={habits}
+                setHabits={setHabits}
+                preferences={preferences}
+                setPreferences={setPreferences}
+              />
+            }
           />
         </Route>
       </Routes>

@@ -67,6 +67,57 @@ body.bg-dark .form-control::placeholder {
   transform: translateY(-2px);
   box-shadow: 0 6px 18px rgba(0, 0, 0, 0.08);
 }
+body.dark {
+  background-color: #0f172a; /* dark navy */
+  color: #e5e7eb;           /* soft white */
+}
+
+/* Cards */
+body.dark .card {
+  background-color: #020617;
+  color: #e5e7eb;
+}
+
+/* Inputs */
+body.dark .form-control,
+body.dark .form-select {
+  background-color: #020617;
+  color: #e5e7eb;
+  border-color: #334155;
+}
+
+body.dark .form-control::placeholder {
+  color: #9ca3af;
+}
+
+/* Buttons */
+body.dark .btn-outline-secondary,
+body.dark .btn-outline-primary {
+  color: #e5e7eb;
+  border-color: #475569;
+}
+
+body.dark .btn-outline-primary:hover {
+  background-color: #2563eb;
+  border-color: #2563eb;
+}
+
+/* Text helpers */
+body.dark .text-muted {
+  color: #9ca3af !important;
+}
+
+/* Navbar / Header */
+body.dark .border-bottom {
+  border-color: #334155 !important;
+}
+
+/* Alerts */
+body.dark .alert {
+  background-color: #020617;
+  color: #e5e7eb;
+  border-color: #334155;
+}
 @keyframes slideUp {
   from {
     opacity: 0;

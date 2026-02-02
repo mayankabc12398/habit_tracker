@@ -8,7 +8,9 @@ export default function Habits({
   deleteHabit,
   editingHabit,
   setEditingHabit,
-  updateHabit
+  updateHabit,
+  markAllToday,
+  clearToday
 }) {
   return (
     <>
@@ -18,12 +20,14 @@ export default function Habits({
         editingHabit={editingHabit}
       />
 
-      <HabitList
-        habits={habits}
-        onToggle={toggleHabit}
-        onDelete={deleteHabit}
-        onEdit={setEditingHabit}
-      />
+     <HabitList
+  habits={habits}
+  onToggle={toggleHabit}
+  onDelete={deleteHabit}
+  onEdit={updateHabit}
+  onMarkAll={markAllToday}
+  onClearToday={clearToday}
+/>
     </>
   );
 }

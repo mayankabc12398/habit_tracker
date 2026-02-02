@@ -4,10 +4,14 @@ import ProgressBar from "../components/ProgressBar";
 import Streak from "../components/Streak";
 import WeeklyChart from "../components/WeeklyChart";
 import WeeklyView from "../components/WeeklyView";
+import LineChart from "../components/LineChart";
 import DashboardFilter from "../components/DashboardFilter";
+import Heatmap from "../components/Heatmap";
 
 export default function Dashboard({ habits }) {
   const [filter, setFilter] = useState("week");
+  const [chartType, setChartType] = useState("bar");
+
   const getToday = () => {
     return new Date().toISOString().split("T")[0];
   };
@@ -48,7 +52,29 @@ export default function Dashboard({ habits }) {
       <DashboardCards habits={habits} />
 
       {/* CHART */}
-      <WeeklyChart habits={habits} days={days} />
+      <div className="card border-0 shadow-sm mb-4">
+        <div className="card-body">
+          <div className="d-flex justify-content-between align-items-center mb-2">
+            <h6 className="mb-0">Progress</h6>
+
+            <select
+              className="form-select form-select-sm w-auto"
+              value={chartType}
+              onChange={(e) => setChartType(e.target.value)}
+            >
+              <option value="bar">Daily Bar</option>
+              <option value="line">Line Chart</option>
+              <option value="heatmap">Heatmap</option>
+            </select>
+          </div>
+
+          {chartType === "bar" && <WeeklyChart habits={habits} days={days} />}
+
+          {chartType === "line" && <LineChart habits={habits} days={days} />}
+
+          {chartType === "heatmap" && <Heatmap habits={habits} days={days} />}
+        </div>
+      </div>
 
       {/* <ProgressBar habits={habits} />
       <Streak habits={habits} />
