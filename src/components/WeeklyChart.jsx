@@ -2,7 +2,9 @@ import {
   Chart as ChartJS,
   CategoryScale,
   LinearScale,
+  BarController,
   BarElement,
+  LineController,
   LineElement,
   PointElement,
   Tooltip,
@@ -13,7 +15,9 @@ import { Chart } from "react-chartjs-2";
 ChartJS.register(
   CategoryScale,
   LinearScale,
+  BarController,
   BarElement,
+  LineController,
   LineElement,
   PointElement,
   Tooltip,
@@ -28,16 +32,14 @@ export default function WeeklyChart({ habits, days }) {
 
   const total = dailyData.reduce((a, b) => a + b, 0);
   const avg =
-    dailyData.length === 0
-      ? 0
-      : +(total / dailyData.length).toFixed(1);
+    dailyData.length === 0 ? 0 : +(total / dailyData.length).toFixed(1);
 
   const data = {
     labels: days,
     datasets: [
       {
         type: "bar",
-        label: "Daily Completed",
+        label: "Daily",
         data: dailyData,
         backgroundColor: "#4F7CF7",
         borderRadius: 6,
@@ -47,10 +49,9 @@ export default function WeeklyChart({ habits, days }) {
         type: "line",
         label: "Weekly Avg",
         data: days.map(() => avg),
-        borderColor: "#22C55E",       // soft green
-        backgroundColor: "transparent",
+        borderColor: "#22C55E",
+        borderDash: [6, 4],
         borderWidth: 2,
-        borderDash: [6, 4],           // 🔥 dotted line
         pointRadius: 0,
         tension: 0.3
       }
@@ -62,24 +63,16 @@ export default function WeeklyChart({ habits, days }) {
     maintainAspectRatio: false,
     plugins: {
       legend: {
-        position: "top",
-        labels: {
-          boxWidth: 10,
-          font: { size: 11 }
-        }
+        labels: { font: { size: 11 } }
       }
     },
     scales: {
-      x: {
-        grid: { display: false },
-        ticks: { font: { size: 10 } }
-      },
       y: {
         beginAtZero: true,
-        ticks: {
-          stepSize: 1,
-          font: { size: 10 }
-        }
+        ticks: { stepSize: 1 }
+      },
+      x: {
+        grid: { display: false }
       }
     }
   };
