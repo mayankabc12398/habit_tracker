@@ -2,25 +2,19 @@ import {
   Chart as ChartJS,
   CategoryScale,
   LinearScale,
-  BarController,
   BarElement,
-  LineController,
   LineElement,
   PointElement,
   Tooltip,
   Legend
 } from "chart.js";
-import { useEffect, useState } from "react";
 
-let ChartComponent = null;
-import { Chart } from "react-chartjs-2";
+import { Bar } from "react-chartjs-2";
 
 ChartJS.register(
   CategoryScale,
   LinearScale,
-  BarController,
   BarElement,
-  LineController,
   LineElement,
   PointElement,
   Tooltip,
@@ -28,29 +22,23 @@ ChartJS.register(
 );
 
 export default function WeeklyChart({ habits, days }) {
-  const [ready, setReady] = useState(false);
   const countCompleted = (day) =>
     habits.filter(h => h.completedDates.includes(day)).length;
 
-  
-  useEffect(() => {
-    import("react-chartjs-2").then((mod) => {
-      ChartComponent = mod.Chart;
-      setReady(true);
-    });
-  }, []);
-    if (!ready) return null;
   const dailyData = days.map(day => countCompleted(day));
 
-  const total = dailyData.reduce((a, b) => a + b, 0);
   const avg =
-    dailyData.length === 0 ? 0 : +(total / dailyData.length).toFixed(1);
+    dailyData.length === 0
+      ? 0
+      : (
+          dailyData.reduce((a, b) => a + b, 0) /
+          dailyData.length
+        ).toFixed(1);
 
   const data = {
     labels: days,
     datasets: [
       {
-        type: "bar",
         label: "Daily",
         data: dailyData,
         backgroundColor: "#4F7CF7",
@@ -58,8 +46,8 @@ export default function WeeklyChart({ habits, days }) {
         barThickness: 14
       },
       {
-        type: "line",
         label: "Weekly Avg",
+        type: "line",
         data: days.map(() => avg),
         borderColor: "#22C55E",
         borderDash: [6, 4],
@@ -73,11 +61,6 @@ export default function WeeklyChart({ habits, days }) {
   const options = {
     responsive: true,
     maintainAspectRatio: false,
-    plugins: {
-      legend: {
-        labels: { font: { size: 11 } }
-      }
-    },
     scales: {
       y: {
         beginAtZero: true,
@@ -91,7 +74,7 @@ export default function WeeklyChart({ habits, days }) {
 
   return (
     <div style={{ height: "160px" }}>
-      <Chart type="bar" data={data} options={options} />
+      <Bar data={data} options={options} />
     </div>
   );
 }
