@@ -10,6 +10,9 @@ import {
   Tooltip,
   Legend
 } from "chart.js";
+import { useEffect, useState } from "react";
+
+let ChartComponent = null;
 import { Chart } from "react-chartjs-2";
 
 ChartJS.register(
@@ -25,9 +28,18 @@ ChartJS.register(
 );
 
 export default function WeeklyChart({ habits, days }) {
+  const [ready, setReady] = useState(false);
   const countCompleted = (day) =>
     habits.filter(h => h.completedDates.includes(day)).length;
 
+  
+  useEffect(() => {
+    import("react-chartjs-2").then((mod) => {
+      ChartComponent = mod.Chart;
+      setReady(true);
+    });
+  }, []);
+    if (!ready) return null;
   const dailyData = days.map(day => countCompleted(day));
 
   const total = dailyData.reduce((a, b) => a + b, 0);
