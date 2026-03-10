@@ -39,6 +39,10 @@ export default function Sidebar({ open, setOpen }) {
           <NavLink to="/settings" className="nav-link py-2">
             ⚙️ <span className="ms-1">Settings</span>
           </NavLink>
+
+          <NavLink to="/topics" className="nav-link py-2">
+            🗒 <span className="ms-1">Topics</span>
+          </NavLink>
         </nav>
       </div>
     </>

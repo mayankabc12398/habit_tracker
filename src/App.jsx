@@ -4,6 +4,7 @@ import Layout from "./layout/Layout";
 import Dashboard from "./pages/Dashboard";
 import Habits from "./pages/Habits";
 import Settings from "./pages/Settings";
+import Topics from "./pages/Topics";
 import useLocalStorage from "./hooks/useLocalStorage";
 import useDarkMode from "./hooks/useDarkMode";
 import { getToday } from "./utils/dateUtils";
@@ -97,6 +98,19 @@ function App() {
             path="/settings"
             element={
               <Settings
+                dark={dark}
+                setDark={setDark}
+                habits={habits}
+                setHabits={setHabits}
+                preferences={preferences}
+                setPreferences={setPreferences}
+              />
+            }
+          />
+          <Route
+            path="/topics"
+            element={
+              <Topics
                 dark={dark}
                 setDark={setDark}
                 habits={habits}
