@@ -131,9 +131,9 @@ body.dark .alert {
 
 /* Topics page responsive table */
 .topics-page {
-  max-width: 1180px;
+  max-width: 100%;
   margin: 0 auto;
-  padding: 1rem 0;
+  /* padding: 1rem 0; */
 }
 
 .topics-header h1 {
@@ -243,7 +243,7 @@ body.dark .alert {
   justify-content: center;
   background: rgba(15, 23, 42, 0.65);
   backdrop-filter: blur(5px);
-  padding: 1.5rem;
+  /* padding: 1.5rem; */
   z-index: 9999;
 }
 
@@ -254,7 +254,7 @@ body.dark .alert {
   border-radius: 18px;
   width: 100%;
   max-width: none;
-  max-height: 85vh;
+  /* max-height: 85vh; */
   box-shadow: 0 32px 60px rgba(0, 0, 0, 0.18);
   animation: modalIn 240ms ease-out;
   overflow: hidden;

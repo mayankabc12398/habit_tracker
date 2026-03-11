@@ -28,12 +28,12 @@ export default function index() {
   )
 
   return (
-    <section className="topics-page">
-      <header className="topics-header">
-        <h1>Topics</h1>
-        <p className="topics-subtitle">
+    <section className="topics-page p-2">
+      <header className="topics-header p-1">
+        <h4>Topics</h4>
+        {/* <p className="topics-subtitle">
           Explore the key areas of your habit journey. Use the table below to quickly scan and manage topics.
-        </p>
+        </p> */}
       </header>
 
       <div className="table-wrapper">

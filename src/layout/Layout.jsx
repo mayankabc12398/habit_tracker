@@ -24,7 +24,7 @@ export default function Layout() {
           <strong>Habit Tracker</strong>
         </div>
 
-        <div className="p-4">
+        <div className="">
           <Outlet />
         </div>
       </div>
