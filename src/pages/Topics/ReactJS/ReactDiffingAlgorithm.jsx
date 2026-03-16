@@ -233,7 +233,7 @@ Update Real DOM`}
       <article className="real-dom-card highlight">
         <h2>12. Common Mistakes</h2>
         <p>
-          ❌ Using array index as key (<code>&lt;li key={index}&gt;</code>) leads to incorrect re-renders, performance issues, और state bugs.
+          ❌ Using array index as key (<code>&lt;li key={"index"}&gt;</code>) leads to incorrect re-renders, performance issues, और state bugs.
         </p>
         <p>Best practice: हमेशा unique id as key use करें।</p>
       </article>
