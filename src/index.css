@@ -209,6 +209,18 @@ body.dark .alert {
   background: rgba(16, 185, 129, 0.15);
   color: #047857;
 }
+.status-pill--done {
+  background: rgba(69, 185, 16, 0.15);
+  color: #197804;
+}
+.status-pill--pending {
+  background: rgba(185, 154, 16, 0.15);
+  color: #697804;
+}
+.status-pill--skipped {
+  background: rgba(185, 16, 16, 0.15);
+  color: #410202;
+}
 
 .status-pill--paused {
   background: rgba(250, 204, 21, 0.16);

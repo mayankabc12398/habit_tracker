@@ -15,7 +15,7 @@ const mockTopics = [
     name: 'Topics Covered',
     description: 'Quick overview of all the React topics this series will cover.',
     created: 'March 12, 2026',
-    status: 'Active',
+    status: "pending",
     Details: <ConverdTopic />,
   },
   {
@@ -23,7 +23,7 @@ const mockTopics = [
     name: 'Document Object Model (DOM)',
     description: 'Understanding the structure and manipulation of the DOM is crucial for effective web development.',
     created: 'Jan 25, 2026',
-    status: 'Active',
+    status: 'done',
     Details: <DOM/>,
   },
   {
@@ -31,7 +31,7 @@ const mockTopics = [
     name: 'Reconciliation',
     description: 'React का reconciliation process कैसे काम करता है और यह performance को कैसे optimize करता है।',
     created: 'March 11, 2026',
-    status: 'Active',
+    status: "pending",
     Details: <Reconciliation/>,
   },
   {
@@ -39,7 +39,7 @@ const mockTopics = [
     name: 'React Diffing Algorithm (Deep Internals)',
     description: 'React का diffing algorithm कैसे काम करता है और यह कैसे determine करता है कि कौन से components को update करना है।',
     created: 'March 11, 2026',
-    status: 'Active',
+    status: 'done',
     Details: <ReactDiffingAlgorithm/>,
   },
   {
@@ -47,7 +47,7 @@ const mockTopics = [
     name: 'React Fiber Architecture',
     description: 'Understanding the React Fiber architecture and how it enables efficient rendering and updates.',
     created: 'March 11, 2026',
-    status: 'Active',
+    status: "pending",
     Details: <ReactFiberArchitecture/>,
   },
   {
@@ -55,7 +55,7 @@ const mockTopics = [
     name: 'React Rendering Process',
     description: 'React का rendering process कैसे काम करता है और यह कैसे optimize किया जाता है।',
     created: 'March 11, 2026',
-    status: 'Active',
+    status: "pending",
     Details: <ReactRenderingProcess/>,
   },
   {
@@ -63,7 +63,7 @@ const mockTopics = [
     name: 'Reactuse Effect',
     description: 'React useEffect hook का उपयोग कैसे करें और यह component lifecycle के साथ कैसे interact करता है।',
     created: 'March 11, 2026',
-    status: 'Active',
+    status: "pending",
     Details: <ReactuseEffect/>,
   },
   {
@@ -71,7 +71,7 @@ const mockTopics = [
     name: 'useMemo / useCallback / useRef / React.memo',
     description: 'Deep dive into memoization hooks and when to use each of them.',
     created: 'March 12, 2026',
-    status: 'Active',
+    status: "pending",
     Details: <ReactMemoHooks/>,
   },
 ]
@@ -83,7 +83,7 @@ const mockTopics = [
 export default function index() {
   const [searchTerm, setSearchTerm] = useState('')
   const [activeTopicId, setActiveTopicId] = useState(null)
-  const [sortKey, setSortKey] = useState('name')
+  const [sortKey, setSortKey] = useState('status')
   const [sortAsc, setSortAsc] = useState(true)
 
   const filteredTopics = useMemo(() => {

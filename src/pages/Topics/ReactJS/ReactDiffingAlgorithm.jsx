@@ -55,7 +55,20 @@ New DOM
 
 React process:
 Destroy old DOM tree
-Create new DOM tree`}
+Create new DOM tree
+
+1. पुराना <div> delete करेगा
+2. नया <span> create करेगा
+3. उसके अंदर नया <h1>Hello</h1> बनाएगा
+
+Note: If the root element type changes, React destroys the old tree and builds a new one from scratch.
+
+
+💡 Interview Answer (Perfect)
+“Why keys are important in React?”
+Answer:
+Keys allow React to match elements between renders and avoid unnecessary re-renders by preserving component identity
+`}
         </pre>
 
         <h3>Assumption 2: Keys Identify Elements</h3>
@@ -63,11 +76,22 @@ Create new DOM tree`}
           React lists को compare करने के लिए <code>key</code> prop use करता है।
         </p>
         <pre className="code-block">
-{`{
-  items.map(item => (
-    <li key={item.id}>{item.name}</li>
-  ))
-}`}
+{`
+OLD List:
+<li key={1}>A</li>
+<li key={2}>B</li>
+<li key={3}>C</li>
+
+New List:
+<li key={4}>D</li>
+<li key={1}>A</li>
+<li key={2}>B</li>
+<li key={3}>C</li>
+
+👉 React index नहीं देखता
+👉 React key से पहचानता है
+
+`}
         </pre>
         <p>Keys help React to identify elements, track movements, detect insertions/deletions.</p>
       </article>
@@ -78,14 +102,18 @@ Create new DOM tree`}
           Diffing algorithm tree comparison करता है और तीन चीज़ों को देखता है:
         </p>
         <ul>
-          <li>Element type</li>
-          <li>Props</li>
-          <li>Children</li>
+          <li>Element type (HTML tags)</li>
+          <li>Props (attributes)</li>
+          <li>Children </li>
         </ul>
         <pre className="code-block">
 {`Old Virtual DOM
         vs
-New Virtual DOM`}
+New Virtual DOM
+
+React jab UI update karta hai, to wo old aur new Virtual DOM ko \n compare karta hai (diffing). Isme React 3 cheeze check karta hai:\n element type, props aur children. Sabse pehle type check hota hai — \nagar type same hai (div → div), to React DOM reuse karta hai,\n aur agar type change ho gaya (div → span), to pura element replace ho jata hai.\n Phir props (jaise class, id) check hote hain, aur sirf changed props update hote hain.\n Last me children (andar ka content) compare hota hai,\n aur jaha change hota hai wahi update hota hai. Isse unnecessary \nre-render nahi hota aur performance fast rehti hai.
+
+`}
         </pre>
       </article>
 
@@ -193,19 +221,18 @@ New list:
       <article className="real-dom-card">
         <h2>9. Diffing Process Flow</h2>
         <pre className="code-block">
-{`Component Render
-       ↓
-Create Virtual DOM
-       ↓
-State Change
-       ↓
-Create New Virtual DOM
-       ↓
-Run Diffing Algorithm
-       ↓
-Find Differences
-       ↓
-Update Real DOM`}
+{`Old Virtual DOM
+        ↓
+New Virtual DOM
+        ↓
+Compare root
+        ↓
+Same type? → update props
+Different type? → replace
+        ↓
+Compare children (using keys)
+        ↓
+Apply minimal changes to Real DOM`}
         </pre>
       </article>
 
