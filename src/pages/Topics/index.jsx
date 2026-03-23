@@ -8,6 +8,8 @@ import ReactRenderingProcess from './ReactJS/ReactRenderingProcess'
 import ReactuseEffect from './ReactJS/ReactuseEffect'
 import ConverdTopic from './ReactJS/converdTopic'
 import ReactMemoHooks from './ReactJS/ReactMemoHooks'
+import ImpTopic from './ReactJS/ImpTopic'
+import ReactRerenderStepper from './ReactJS/ReactRerenderStepper'
 
 const mockTopics = [
   {
@@ -31,7 +33,7 @@ const mockTopics = [
     name: 'Reconciliation',
     description: 'React का reconciliation process कैसे काम करता है और यह performance को कैसे optimize करता है।',
     created: 'March 11, 2026',
-    status: "pending",
+    status: "done",
     Details: <Reconciliation/>,
   },
   {
@@ -73,6 +75,22 @@ const mockTopics = [
     created: 'March 12, 2026',
     status: "pending",
     Details: <ReactMemoHooks/>,
+  },
+  {
+    id: 8,
+    name: 'Important Topic',
+    description: 'Important',
+    created: 'March 23, 2026',
+    status: "pending",
+    Details: <ImpTopic/>,
+  },
+  {
+    id: 9,
+    name: 'React Rerender Stepper',
+    description: 'React Rerender Stepper',
+    created: 'March 23, 2026',
+    status: "pending",
+    Details: <ReactRerenderStepper/>,
   },
 ]
 

@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-
+import reconcillationimg from '../../../assets/recomcillation.jpeg'
 export default function ReactDiffingAlgorithm() {
   const [mounted, setMounted] = useState(false)
 
@@ -263,6 +263,17 @@ Apply minimal changes to Real DOM`}
           ❌ Using array index as key (<code>&lt;li key={"index"}&gt;</code>) leads to incorrect re-renders, performance issues, और state bugs.
         </p>
         <p>Best practice: हमेशा unique id as key use करें।</p>
+      </article>
+      <article className="real-dom-card highlight">
+        <h2>13. Notes</h2>
+
+        <p>
+          Diffing = the comparison step — "what changed?"
+Reconciliation = the entire process — "compare + decide + update the real DOM"
+Think of it like this: diffing is one part inside reconciliation. Reconciliation is the full workflow.
+        </p>
+        <img src={reconcillationimg} width={500}/>
+      
       </article>
     </section>
   )

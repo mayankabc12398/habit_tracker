@@ -28,14 +28,14 @@ export default function DOM() {
         <h2>2. Structure of Real DOM</h2>
         <p><strong>Example HTML</strong></p>
         <pre className="code-block">
-{`<div>
+          {`<div>
   <h1>Hello</h1>
   <p>Welcome</p>
 </div>`}
         </pre>
         <p><strong>Browser इसे DOM tree में convert करता है:</strong></p>
         <pre className="code-block">
-{`        div
+          {`        div
        /   \
      h1     p
      |      |
@@ -53,7 +53,7 @@ export default function DOM() {
           <li>Browser repaint करता है</li>
         </ol>
         <pre className="code-block">
-{`DOM Change
+          {`DOM Change
    ↓
 Reflow (layout calculation)
    ↓
@@ -67,7 +67,7 @@ Repaint (UI redraw)`}
       <article className="real-dom-card">
         <h2>4. Example of Real DOM Manipulation</h2>
         <pre className="code-block">
-{`const element = document.getElementById("title");
+          {`const element = document.getElementById("title");
 element.innerText = "Hello React";`}
         </pre>
         <p>यह code directly Real DOM को update करता है।</p>
@@ -98,13 +98,13 @@ element.innerText = "Hello React";`}
         <h2>Virtual DOM की Structure</h2>
         <p><strong>Example React code</strong></p>
         <pre className="code-block">
-{`function App() {
+          {`function App() {
   return <h1>Hello React</h1>;
 }`}
         </pre>
         <p><strong>React internally इसे object में convert करता है:</strong></p>
         <pre className="code-block">
-{`{
+          {`{
   type: "h1",
   props: {
     children: "Hello React"
@@ -120,14 +120,14 @@ element.innerText = "Hello React";`}
         <h2>Virtual DOM Tree Example</h2>
         <p><strong>React JSX</strong>:</p>
         <pre className="code-block">
-{`<div>
+          {`<div>
   <h1>Hello</h1>
   <p>React</p>
 </div>`}
         </pre>
         <p><strong>Virtual DOM tree:</strong></p>
         <pre className="code-block">
-{`        div
+          {`        div
        /   \
      h1     p
      |      |
@@ -156,7 +156,7 @@ element.innerText = "Hello React";`}
       <article className="real-dom-card">
         <h2>Virtual DOM Flow</h2>
         <pre className="code-block">
-{`State Change
+          {`State Change
       ↓
 New Virtual DOM
       ↓
@@ -171,7 +171,7 @@ Update Real DOM`}
       <article className="real-dom-card">
         <h2>Example: React Update</h2>
         <pre className="code-block">
-{`function Counter() {
+          {`function Counter() {
   const [count, setCount] = React.useState(0);
 
   return <h1>{count}</h1>;
@@ -182,7 +182,7 @@ Update Real DOM`}
         <p><strong>User Click:</strong> <code>setCount(1)</code></p>
         <p><strong>React Process:</strong></p>
         <pre className="code-block">
-{`Old Virtual DOM → <h1>0</h1>
+          {`Old Virtual DOM → <h1>0</h1>
 New Virtual DOM → <h1>1</h1>
 
 React detects: Only text changed
@@ -229,6 +229,16 @@ React updates only the text in the Real DOM.`}
           <li>React का Diffing Algorithm O(n) complexity में काम करता है।</li>
           <li>Virtual DOM performance improve करता है क्योंकि DOM manipulation expensive operation होता है।</li>
         </ul>
+      </article>
+      <article className="real-dom-card highlight">
+        <h2>Other Best examples</h2>
+
+        Simple analogy 🏠
+        Imagine you want to repaint one wall in your house. Two approaches:
+        <br />
+
+       <strong> Real DOM approach:</strong> Tear down and rebuild the entire house every time
+        <strong>React's approach:</strong> Take a photo of the house (Virtual DOM), mark only the one wall that changed, then go fix just that wall in the real house
       </article>
     </section>
   )

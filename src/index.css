@@ -150,6 +150,7 @@ body.dark .alert {
 
 .table-wrapper {
   overflow-x: auto;
+  max-height: 60vh;
   border-radius: 14px;
   background: rgba(255, 255, 255, 0.9);
   box-shadow: 0 10px 25px rgba(0, 0, 0, 0.06);
